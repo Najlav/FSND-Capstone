@@ -7,7 +7,7 @@ Reservation manager: Can view a all reservations details.
 Menu manager: Can add or delete dishes from the Menu.
 
 
-##Running the API 
+## Running the API 
 API endpoints can be accessed via https://restaurant-fsnd-capstone.herokuapp.com/
 
 Auth0 information for endpoints that require authentication can be found in setup.sh.
