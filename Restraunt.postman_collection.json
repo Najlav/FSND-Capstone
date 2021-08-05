@@ -1,0 +1,792 @@
+{
+	"info": {
+		"_postman_id": "75d06f84-0a22-4d4f-93fe-60ba45f98a6b",
+		"name": "Restraunt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "/menu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is ok\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"value contains dishes array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.dishes).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account\": \"Sara@gmail.com\",\n    \"appointmentـTime\": \"2021-05-03 03:16:04\",\n    \"guest\": \"Sara\",\n    \"chairs\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/book",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"book"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "Guest@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "appointmentـTime",
+									"value": "2021-08-03 03:16:00",
+									"disabled": true
+								},
+								{
+									"key": "Guest",
+									"value": "New Guest ",
+									"disabled": true
+								},
+								{
+									"key": " Chairs",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409 the table is not available for this date and time\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account\": \"Sara@gmail.com\",\n    \"appointmentـTime\": \"2021-05-03 03:16:04\",\n    \"guest\": \"Sara\",\n    \"chairs\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/book",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"book"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "Guest@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "appointmentـTime",
+									"value": "2021-08-03 03:16:00",
+									"disabled": true
+								},
+								{
+									"key": "Guest",
+									"value": "New Guest ",
+									"disabled": true
+								},
+								{
+									"key": " Chairs",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 the user need to fill all the fields\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account\": \"Sara@gmail.com\",\n    \"appointmentـTime\": \"2021-05-03 03:16:04\",\n    \"guest\": \"\",\n    \"chairs\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/book",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"book"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "Guest@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "appointmentـTime",
+									"value": "2021-08-03 03:16:00",
+									"disabled": true
+								},
+								{
+									"key": "Guest",
+									"value": "New Guest ",
+									"disabled": true
+								},
+								{
+									"key": " Chairs",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/menu/add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dish_name\": \"Orange Juice\",\n    \"category\":\"Cold Drinks\",\n    \"description\": \"Fresh orange Juice\",\n    \"price\": \"10$\",\n    \"image_link\":\"https://unsplash.com/s/photos/orange-juice\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservation manger",
+			"item": [
+				{
+					"name": "/Guest@gmail.com/reservation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is ok\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"value contains reservation array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.reservation).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/Guest@gmail.com/reservation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"Guest@gmail.com",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/NoOne@gmail.com/reservation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/NoOne@gmail.com/reservation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"NoOne@gmail.com",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/reservation-detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is ok\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"value contains reservation details array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.reservation_detail).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reservation-detail",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reservation-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/menu/9/delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 unauthorized\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/1/delete",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNueTI2dXBlSXFfWW53MTl1Y3YzMiJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLmF1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MTBhYWMwYzU5ZDY1MzAwNzA3YmI1NzQiLCJhdWQiOiJjYXBzdG9uZV9BUEkiLCJpYXQiOjE2MjgxMjEzMzMsImV4cCI6MTYyODIwNzczMywiYXpwIjoielNTd0ZmZ2FBTFl5UXJrNVkyYUQ3WlRPOUpxckVGeVgiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbInJlYWQ6cmVzZXJ2YXRpb24iLCJyZWFkOnJlc2VydmF0aW9ucy1kZXRhaWxzIl19.XJvmblPWgO1jTxVbmYquS7-NoePtaBCGGnPPNvFZ3Mb24ZyjpaRACXmDnJyi_D7NFoKvyqDrAZBdpmeCjPxYfg8wtqR5FG4e60vM5w0igxUvHsWTTV2cD0Url0aR0Ir4oe82ysMuwnxVKDYGOlBjzYVQ6CGTOTOQwwsL42wQYmTAaX4se-e2hX5IeaGYrOiuO15V6d-Gve8saPbsW9pe5_OFW_loEQZPvZCRp7Wyi97oWBzqAXiu5m85p-6vsEW2OG581ohkeRGM3b1RVmK3ElT4B_xkuA11Ogt8WBHJQoaAsnZ5F7KjUkqSHQ_izN5njieR9ysGLlTqf0Pfgk0vog",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Menu manger",
+			"item": [
+				{
+					"name": "/menu/add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is ok\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dish_name\": \"Orange Juice\",\n    \"category\":\"Cold Drinks\",\n    \"description\": \"Fresh orange Juice\",\n    \"price\": \"10$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/menu/add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 the user need to fill all the fields\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dish_name\": \"Orange Juice\",\n    \"category\":\"Cold Drinks\",\n    \"description\": \"Fresh orange Juice\",\n    \"price\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu/100/delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 invalid dish id\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/100/delete",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"100",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/menu/1/edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is ok\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": \"30$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/5/edit",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"5",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/menu/100/edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is 400 invalid dish id\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": \"30$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/menu/100/edit",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"menu",
+								"100",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/reservation-detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 unauthorized\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/reservation-detail",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"reservation-detail"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNueTI2dXBlSXFfWW53MTl1Y3YzMiJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLmF1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MTBhYWMzNjk3NGMxYTAwNmIxNTNhMWIiLCJhdWQiOiJjYXBzdG9uZV9BUEkiLCJpYXQiOjE2MjgxMjE2MTEsImV4cCI6MTYyODIwODAxMSwiYXpwIjoielNTd0ZmZ2FBTFl5UXJrNVkyYUQ3WlRPOUpxckVGeVgiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpkaXNoIiwiZWRpdDpkaXNoIiwicG9zdDpkaXNoIl19.MzpJ2cdYo530o1AIS7rAUtxc6TfnpuM5XSmojEofynIVu0dMRm4uN5ERAPpUEi57njaQPazU5F-TIPgB9xjbRhQjEWYzAul5wBJq3GxzPxO25HB1-bVOn6uSPs8AN1mDvn_EdwfXXMAi7YB7LPNee7_8hoa6sZtx6xykmxfe9UjgNLmDNGnp-qOYVqOQ3sT61bi8rtPV-dc1Jlxfuxtich0FtYMcMfGBFlpv8rqU3mmki3Q1GOn5tZdBOJcOPECDySKrQaSu-NgCGLzhd1qStiHJKSMGiNO6blnep35xR4ptnvz3UeyKIHX40Gkm3PsXEzfqF6y1dt9U8rOV1SPjKA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
