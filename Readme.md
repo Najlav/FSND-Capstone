@@ -36,7 +36,7 @@ This will install all of the required packages we selected within the `requireme
  - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server. 
 
 ## Testing
-To run the tests, run the postman collectection file in postman [Restraunt.postman_collection](https://)
+To run the tests, run the postman collectection file in postman [Restraunt.postman_collection](https://github.com/Najlav/FSND-Capstone/blob/main/Restraunt.postman_collection.json)
 
 ## API Reference
 
