@@ -2,9 +2,9 @@
 
 The Restruant API supports a basic Restruant by allowing users to query the database to preview the Menu or to book a table. There are 3 different user roles (and related permissions), which are:
 
-Public user: Can view the menu and book a table.
-Reservation manager: Can view a all reservations details.
-Menu manager: Can add or delete dishes from the Menu.
+- Public user: Can view the menu and book a table.
+- Reservation manager: Can view a all reservations details.
+- Menu manager: Can add or delete dishes from the Menu.
 
 
 ## Running the API 
